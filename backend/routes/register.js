@@ -26,6 +26,7 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
       return null;
     }
     const error = await validation();
+
     if (error !== null) {
       await prisma.$disconnect();
       return error;
