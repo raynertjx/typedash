@@ -13,6 +13,7 @@ export const Login: FC<LoginProps> = ({}) => {
   const context = useContext(authContext);
 
   const loginUserHandler = (values: FormikValues) => {
+    values.email = values.email.toLowerCase();
     loginUser(values).then((res) => {
       if (res?.status === 200) {
         context?.setUser(res?.data.user.name);
